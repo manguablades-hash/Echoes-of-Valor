@@ -481,27 +481,12 @@
             }
         }
 
+        // ==========================================
+        // CONEXIÓN DESACTIVADA TEMPORALMENTE
+        // ==========================================
         async function connectWallet() {
-            if (typeof window.ethereum === 'undefined') {
-                alert('❌ Por favor instala la extensión de MetaMask para poder jugar.');
-                return;
-            }
-
-            try {
-                provider = new ethers.BrowserProvider(window.ethereum);
-                await provider.send("eth_requestAccounts", []);
-                signer = await provider.getSigner();
-                userAddress = await signer.getAddress();
-
-                const shortAddr = userAddress.substring(0, 6) + '...' + userAddress.substring(userAddress.length - 4);
-                document.getElementById('walletText').innerText = shortAddr;
-
-                await fetchOnChainBalance();
-                alert('🎉 ¡Billetera conectada con éxito!');
-            } catch (error) {
-                console.error(error);
-                alert('❌ Error al conectar con MetaMask.');
-            }
+            alert("🎮 ¡El token $VALOR ya está en marcha!\n\nLas funciones Web3 del juego y la conexión con MetaMask se activarán oficialmente en la próxima actualización. ¡Mantente atento a los anuncios!");
+            console.log("Conexión a MetaMask en pausa temporal por mantenimiento y despliegue de token.");
         }
 
         async function fetchOnChainBalance() {
